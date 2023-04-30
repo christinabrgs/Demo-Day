@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/47aae21c46.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
@@ -38,7 +39,7 @@
         <div class="col-sm-6">
           <h3>Messages</h3>
           <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
+          <% for(let i=0; i<messages.length; i++) {%>
             <li class="message">
               <span><%= messages[i].name %></span>
               <span><%= messages[i].msg %></span>

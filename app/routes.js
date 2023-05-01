@@ -1,5 +1,5 @@
 module.exports = function(app, passport, db) {
-
+const journalEntries = db.collection('entries')
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -13,10 +13,34 @@ module.exports = function(app, passport, db) {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
-            messages: result
           })
         })
     });
+
+    app.get ('/journal', async (req, res) => {
+      journalEntries.find().toArray((err, result) => {
+        console.log(result)
+        if (err) return console.log(err)
+        res.render('journal.ejs', {
+          entries: result
+        })
+      })
+    }) 
+
+    app.post ('/entries', async(req, res) => {
+      journalEntries.insertOne({date: req.body.date, entry: req.body.entry}, (err, result) => {
+        console.log(result)
+        if (err) return res.send(err)
+        res.redirect('/profile')
+      })
+    })
+
+    app.delete('/delete', (req, res) => {
+      journalEntries.findOneAndDelete({date: req.body.date, entry: req.body.entry}, (err, result) => {
+        if (err) return res.send(500, err)
+        res.send('Message deleted!')
+      })
+    })
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -36,35 +60,7 @@ module.exports = function(app, passport, db) {
       })
     })
 
-    app.put('/messages', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-        $set: {
-          thumbUp:req.body.thumbUp + 1
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-    })
 
-    app.put('/messages/thumbsDown', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-        $set: {
-          thumbUp:req.body.thumbUp - 1
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-    })
 
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {

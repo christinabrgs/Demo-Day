@@ -27,20 +27,47 @@ const journalEntries = db.collection('entries')
       })
     }) 
 
+    app.get ('/bookmarked', async (req, res) => {
+      journalEntries.find().toArray((err, result) => {
+        console.log(result)
+        if (err) return console.log(err)
+        res.render('bookmarked.ejs', {
+          entries: result
+        })
+      })
+    }) 
+
     app.post ('/entries', async(req, res) => {
-      journalEntries.insertOne({date: req.body.date, entry: req.body.entry}, (err, result) => {
+      journalEntries.insertOne({date: req.body.date, entry: req.body.entry, bookmark: false}, (err, result) => {
         console.log(result)
         if (err) return res.send(err)
         res.redirect('/profile')
       })
     })
+    
+    app.put('/bookmarks', (req, res) => {
+      journalEntries
+        .findOneAndUpdate({ date: req.body.date, entry: req.body.entry}, {
+          $set: {
+            bookmark: req.body.bookmark
+          }
+        }, {
+          sort: { _id: -1 },
+          upsert: true
+        }, (err, result) => {
+          if (err) return res.send(err)
+          res.send(result)
+        })
+    })
 
-    app.delete('/delete', (req, res) => {
+    app.delete('/journal', (req, res) => {
       journalEntries.findOneAndDelete({date: req.body.date, entry: req.body.entry}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })
     })
+
+    
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {

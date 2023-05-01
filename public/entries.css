@@ -1,0 +1,46 @@
+/* Diary Styles */
+
+body {
+    background-color: #f4f4f4;
+    font-family: 'Lobster', cursive;
+    font-size: 16px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background-image: url("diary-bg.jpg");
+    background-repeat: repeat;
+  }
+  
+  .page-header {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+  }
+  
+  li {
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .fa-circle-minus, .fa-star {
+    margin-left: 10px;
+    color: #333;
+  }
+  
+  .fa-circle-minus:hover, .fa-star:hover {
+    cursor: pointer;
+    color: #ff8c00;
+  }

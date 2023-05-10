@@ -22,7 +22,7 @@
 
     <div class="row">
       <% for (let i=0; i < entries.length; i++) {%>
-        <ul><li><p><span class="date"><%= entries[i].date %> </span><span><%= entries[i].entry %></span> <i class="fa-solid fa-circle-minus"></i><i class="fa-regular fa-star"></i></p></li></ul>
+        <ul><li><p><span class="date"><%= entries[i].date %> </span><span><%= entries[i].entry %></span> <i class="fa-solid fa-circle-minus"></i><i data-entryid="<%= entries[i]._id %>" class="fa-regular fa-star"></i></p></li></ul>
       <% } %>   
     </div>
 

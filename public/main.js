@@ -26,16 +26,15 @@ Array.from(trash).forEach(function (element) {
 
 Array.from(star).forEach(function (element) {
   element.addEventListener('click', function () {
-    const date = this.parentNode.childNodes[0].innerText
-    const entry = this.parentNode.childNodes[1].innerText
-    const newValue = true
+    const id = element.dataset.entryid
+
+    console.log(id)
+
     fetch('/bookmarks', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        'date': date,
-        'entry': entry,
-        'bookmark': newValue,
+        'id': id,
       })
     })
       .then(response => {

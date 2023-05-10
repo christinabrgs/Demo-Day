@@ -1,4 +1,5 @@
 module.exports = function(app, passport, db) {
+const ObjectID = require('mongodb').ObjectID
 const journalEntries = db.collection('entries')
 // normal routes ===============================================================
 
@@ -17,8 +18,8 @@ const journalEntries = db.collection('entries')
         })
     });
 
-    app.get ('/journal', async (req, res) => {
-      journalEntries.find().toArray((err, result) => {
+    app.get ('/journal', isLoggedIn, async (req, res) => {
+      journalEntries.find({userId: req.user._id}).toArray((err, result) => {
         console.log(result)
         if (err) return console.log(err)
         res.render('journal.ejs', {
@@ -28,7 +29,7 @@ const journalEntries = db.collection('entries')
     }) 
 
     app.get ('/bookmarked', async (req, res) => {
-      journalEntries.find().toArray((err, result) => {
+      journalEntries.find({userId: req.user._id}).toArray((err, result) => {
         console.log(result)
         if (err) return console.log(err)
         res.render('bookmarked.ejs', {
@@ -38,7 +39,7 @@ const journalEntries = db.collection('entries')
     }) 
 
     app.post ('/entries', async(req, res) => {
-      journalEntries.insertOne({date: req.body.date, entry: req.body.entry, bookmark: false}, (err, result) => {
+      journalEntries.insertOne({userId: req.user._id, date: req.body.date, entry: req.body.entry, bookmark: false}, (err, result) => {
         console.log(result)
         if (err) return res.send(err)
         res.redirect('/profile')
@@ -46,15 +47,14 @@ const journalEntries = db.collection('entries')
     })
     
     app.put('/bookmarks', (req, res) => {
+      console.log('body', req.body)
+
       journalEntries
-        .findOneAndUpdate({ date: req.body.date, entry: req.body.entry}, {
-          $set: {
-            bookmark: req.body.bookmark
-          }
-        }, {
-          sort: { _id: -1 },
-          upsert: true
-        }, (err, result) => {
+        .findOneAndUpdate({ _id: ObjectID(req.body.id) }, 
+        [
+          { $set: { bookmark: { $not: "$bookmark" } } }
+        ]
+        , (err, result) => {
           if (err) return res.send(err)
           res.send(result)
         })

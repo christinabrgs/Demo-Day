@@ -1,16 +1,20 @@
-# Journal APP
+# Install
 
-This is a full-stack application built using Node.js and MongoDB on the backend, and HTML/CSS on the frontend. A user will be able to add new entries to their journal, bookmark entries, and see visualized data of patterns in their writing, i.e important tasks to complete, activity suggestions, prompt suggestions, resources based on mood patterns.
+`npm install`
 
-## Installation
+---
 
-1. Clone the repository to your local machine
+# Things to add
 
-2. Navigate to the project directory and install the necessary dependencies: npm install
+- Create a `.env` file in config folder and add the following as `key = value`
+  - PORT = 2121 (can be any port example: 3000)
+  - DB_STRING = `your database URI`
+  - CLOUD_NAME = `your cloudinary cloud name`
+  - API_KEY = `your cloudinary api key`
+  - API_SECRET = `your cloudinary api secret`
 
-3. Access the application by running 'node server.js' opening your web browser and navigating to `http://localhost:8080`.
+---
 
-4. write a journal entry and click 'submit', navigate to 'entries' to see all entries, and 'bookmarks' for bookmarked entries.
+# Run
 
-
-
+`npm start`

@@ -1,0 +1,77 @@
+<%- include('partials/header') -%>
+<header class="py-10">
+  
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-white">Workout Generator</h1>
+  </div>
+  
+</header>
+
+</div>  
+  
+<main class="-mt-32">
+
+    <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <!-- Your content -->
+      <form class="p-4" action="/form"
+        method="post">
+      <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
+            <div class="relative  rounded border border-dashed border-gray-400 opacity-75">
+
+        <div class='p-4'>
+          
+          <p class="py-4">enter your weight <input class="text-black w-32 px-2 rounded-md" name="weight"
+              placeholder="weight in lbs" type="number" value=""></p>
+          <p class="py-4">enter your height <input class="text-black w-20 px-2 rounded-md" name="feet" placeholder="feet"
+              type="number" value=""> <input class="text-black w-20 px-2 rounded-md" name="inches" placeholder="inches"
+              type="number" value=""></p>
+          <p class="py-4">what is your focus <br>
+            <input type="radio" id="hypertrophy" name="focus" value="hypertrophy">
+            <label for="hypertrophy">hypertrophy</label> <br>
+            <input type="radio" id="strength_training" name="focus" value="strength_training">
+            <label for="strength_training">strength training</label><br>
+            <input type="radio" id="weight_loss" name="focus" value="weight_loss">
+            <label for="weight_loss">weight loss</label>
+          </p>
+          <p class="py-4">how many days a week <input class="text-black w-32 px-2 rounded-md" name="days"
+              placeholder="days/ week" type="number" value=""></p>
+          <p class="py-4">choose a difficulty <br>
+            <input class="text-black" type="radio" id="beginner" name="level" value="beginner">
+            <label for="beginner">beginner</label> <br>
+            <input class="text-black" type="radio" id="intermediate" name="level" value="intermediate">
+            <label for="intermediate">intermediate</label> <br>
+            <input class="text-black" type="radio" id="advance" name="level" value="advance">
+            <label for="advance">advance</label>
+          </p>
+          <p class="py-4">enter your goal <input class="text-black w-48 px-2 rounded-md" name="goal"
+              placeholder="i.e gain 8 lbs of muscle" type="text" value=""></p>
+              <p class="py-4">anything to take into consideration? <textarea class="text-black w-48 px-2 rounded-md" name="notes"
+                placeholder="i.e any injuries, health concerns, etc" type="text" value=""></textarea></p>
+
+         <!--  <div class="mx-auto px-36 pt-6">
+            <button id="toggle" class="text-black px-2 bg-slate-400 rounded-md" type="submit">GENERATE</button>
+          </div> -->
+
+      </div>
+    </div>
+    
+  </div>
+  <div class="w-full flex flex-reverse p-4">
+            <div class="flex-1"></div>
+            
+            <div>
+              
+                <button type="submit" class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                  </svg>
+                Generate Workout
+                </button>
+              
+          </div>
+          </div>
+  </form>
+  </div>
+
+</div>
+<%- include('partials/formfoot') -%>

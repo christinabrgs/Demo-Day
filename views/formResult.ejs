@@ -1,0 +1,151 @@
+<%- include('partials/header') -%>
+<% const id = (workout?._id || 1).toString() %>
+<header class="py-10">
+  
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between">
+    <h1 class="text-3xl font-bold tracking-tight text-white"><%= workout?.workoutJSON?.workoutName || 'This Workout Doesnt Exist' %></h1>
+    <div class="text-lg text-white focus:text-black;">
+      <form
+          action="/result/delete/<%= id %>?_method=DELETE"
+          method="POST"
+          class="inline-flex px-3"
+        >
+      <button class="btn btn-primary rounded-md hover:bg-sky-700 fa-regular fa-square-minus" type="submit"></button> 
+    </form>
+     <%= workout?.saved ? 'Saved' : '' %>
+    </div>
+  </div>
+  
+</header>
+
+</div>  
+  
+<main class="-mt-32">
+    <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <!-- Your content -->
+      <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
+            <div class="relative  rounded border border-dashed border-gray-400 opacity-75">
+
+              <div class="p-4 text-lg font-medium">
+                <%= workout?.workoutJSON?.instructions || '' %>
+              </div>
+              <div class="p-4">
+                <ul role="list" class="divide-y divide-gray-100 max-w-lg mx-auto">
+                  <% (workout?.workoutJSON?.exercises || []).forEach(function(exercise) { %>
+                      <li class="flex gap-x-4 py-5">
+                        <div class="flex-auto">
+                          <div class="flex items-baseline justify-between gap-x-4">
+                            <p class="text-sm font-semibold leading-6 text-gray-900"><%= exercise.name %></p>
+                            <p class="flex-none text-xs text-gray-600">
+                              <%= exercise.reps %> reps
+                            </p>
+                          </div>
+                          <p class="mt-1 text-sm leading-6 text-gray-600">
+                            <%= exercise.instructions %>
+                          </p>
+                        </div>
+                      </li>
+                  <% }) %>
+                </ul>
+
+                <form class="text-right" action="/editWorkout/<%= workout._id %>" method="get">
+                  <button class="text-white py-1 px-2 bg-gray-800 rounded-md" type="submit">
+                    edit
+                  </button>
+                </form> 
+                
+              </div>
+            </div>
+          </div>
+          <% if (!workout?.saved) { %>
+          <div class="w-full flex flex-reverse p-4">
+            <div class="flex-1"></div>
+            <div class="px-2">
+              <a href="/form" type="button" class="relative inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                
+                Try Again
+              </a>
+            </div>
+            <div>
+              <form action="/result/update/<%= id %>?_method=PUT" method="POST">
+                <button type="submit" class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                  </svg>
+                Save Workout
+                </button>
+              </form>
+            </div>
+          </div>
+          <%}%>
+      </div>
+  </main>
+</div>
+<!-- <div class="container text-white mx-auto px-40">
+  <div class="row mt-5">
+    <div class="col-6">
+      <div>
+        <p><strong>User Name</strong>: <%= user.userName %></p>
+        <p><strong>Email</strong>: <%= user.email %></p>
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="page-header text-center">
+
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <a href="/favorites" class="btn btn-default btn-sm">Favorites</a>
+  </div>
+
+  <div class="row">
+
+    
+    <div class="col-sm-6 mx-auto px-28 py-8">
+
+      
+
+      
+        <h1 class="text-center">GENERATED RESULTS</h1>
+        <p class="py-4">
+          <div id="results" class=" text-center col col-sm-5">
+            
+                <% if (typeof workout !== 'undefined') { %>
+                  <pre>
+                      <%= JSON.stringify(workout.workoutJSON, null,3) %>
+                  </pre>
+                <% } %>  
+                
+
+
+
+                <button class="text-black px-2 bg-slate-400 rounded-md" type="submit">Save Plan</button>
+
+                
+              </ul>
+            </p>
+          </div>
+      </form>
+
+
+
+
+      </form>
+    </div>
+
+
+
+
+
+
+  </div>
+
+</div>
+ -->
+
+
+
+
+
+<%- include('partials/formfoot') -%>

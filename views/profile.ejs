@@ -1,74 +1,240 @@
-<!doctype html>
-<html>
+<%- include('partials/header') -%>
+<header class="py-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-white">Your Profile</h1>
+  </div>
+</header>
 
-<head>
-  <title></title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/47aae21c46.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-</head>
+</div>
 
-<body>
-  <div class="container">
+<main class="-mt-24 pb-8">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
+    <h1 class="sr-only">Page title</h1>
+    <!-- Main 3 column grid -->
+    <div class="grid grid-cols-2 items-start gap-4 lg:grid-cols-2 lg:gap-4">
+      <!-- Left column -->
+      <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+        <section aria-labelledby="section-1-title">
+          <h2 class="sr-only" id="section-1-title">Section title</h2>
+          <div class="overflow-hidden h-58 rounded-lg bg-white shadow">
+            <div class="p-10">
+              <div class="flex items-center">
+                <div class=" font-medium flex-1 text-indigo-800">Your Recent Workout Logs</div>
+                <a href='/tracking'
+                  class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z">
+                    </path>
+                  </svg>
+                  Log Workout
+                </a>
+              </div>
 
-    <div class="page-header text-center">
-      <h1></span> YOUR JOURNAL</h1>
-      
-    </div>
 
-    <div class="row">
 
-      <!-- LOCAL INFORMATION -->
-      <!-- <div class="col-sm-3">
-        <div class="well">
-          <h3><span class="fa fa-user"></span> Local</h3>
 
-          <% if (user.local.email) { %>
-          <p>
-            <strong>id</strong>: <%= user._id %><br>
-            <strong>email</strong>: <%= user.local.email %><br>
-            <strong>password</strong>: <%= user.local.password %>
-          </p>
+              <ul class="">
+              <% for (let i = 0; i < 4; i++) {%>
 
-          <a href="/unlink/local" class="btn btn-default">Unlink</a>
-          <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-          <% } else { %>
-          <a href="/connect/local" class="btn btn-default">Connect Local</a>
-          <% } %>
+              <% let month = logs[i].date.getUTCMonth() + 1; //months from 1-12 %>
+              <% let day = logs[i].date.getUTCDate(); %>
+              <% let year = logs[i].date.getUTCFullYear(); %>
 
-        </div>
-      </div> -->
-      <div class="col-sm-12">
-        <h3></h3>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="/journal">Entries</a></li>
-            <li><a href="/bookmarked">Bookmarks</a></li>
-            <li><a href="/insight">Insights (not linked)</a></li>
-          </ul>
-        </nav>
+              <% let newdate = year + "/" + month + "/" + day; %>
+
+                <li class="py-1"> <%= newdate %> <%= logs[i].exercise %> (<%= logs[i].set %> x <%= logs[i].reps %> reps) with <%= logs[i].weight %> lbs </li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+        </section>
       </div>
 
+      <!-- Right column -->
+      <div class="grid grid-cols-1 gap-4">
+        <section aria-labelledby="section-2-title">
+          <h2 class="sr-only" id="section-2-title">Section title</h2>
+          <div class="overflow-hidden rounded-lg bg-white shadow">
+            <div class="p-6">
+              <div class="flex items-center pb-4">
+                <div class=" font-medium text-indigo-800 flex-1">Your Workout Plans</div>
+                <a href='/form'
+                  class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z">
+                    </path>
+                  </svg>
+                  New Plan
+                </a>
+              </div>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+
+                <% (workouts || []).forEach(function(workout) { %>
+                <div
+                  class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+                  <div class="min-w-0 flex-1">
+                    <a href="/result/<%= workout._id %>" class="focus:outline-none">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      <p class="text-sm font-medium text-gray-900"><%= workout?.workoutJSON?.workoutName %></p>
+                      <p class="truncate text-sm text-gray-500"><%= workout?.workoutJSON?.excercises?.length %>
+                        exercises</p>
+                    </a>
+                  </div>
+                </div>
+                <%})%>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      
+
+
+
+ <!-- Right column -->
+ <div class="grid grid-col-1 gap-4">
+  <section aria-labelledby="section-2-title">
+    <h2 class="sr-only" id="section-2-title">Section title</h2>
+    <div class="overflow-hidden rounded-lg bg-white shadow">
+      <div class="p-6">
+        <div class="flex items-center pb-4">
+          <div class=" font-medium text-indigo-800 flex-1">Resources</div>
+
+          <!-- <form> -->
+          <div
+            class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          <input type="text" class="search text-black">
+            <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              
+              <path
+                d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z">
+              </path>
+            </svg>
+            <button type="submit" class="searchVideo"> Search </button>
+          </div>
+        <!-- </form> -->
+        </div>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+
+          <% (workouts || []).forEach(function(workout) { %>
+          <div
+            class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+            <div class="min-w-0 flex-1">
+
+            <iframe class="video-one rounded-md" width="100%" height="315" src="https://www.youtube.com/embed/Y8HIFRPU6pM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- <iframe class="video-two" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+            </div>
+          </div>
+          <%})%>
+
+        </div>
+      </div>
     </div>
-    <div class="row-span-1">
-      <h1 class="title text-center">
-        Create an Entry
-      </h1>
+  </section>
+</div>
 
-      <form class="text-center" action="/entries" method="post">
-        <input class="date" name="date" type="date" value="">
-        <input class="entry" name="entry" placeholder="Document your thoughts and feelings with ease. 💭">
-        <br>
-        <button class="btn btn-secondary" type="submit">Submit</button>
-      </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- images -->
+      <div class="grid grid-cols-1 gap-4">
+        <section aria-labelledby="section-2-title">
+          <h2 class="sr-only" id="section-2-title">Section title</h2>
+          <div class="overflow-hidden rounded-lg bg-white shadow">
+            <div class="p-6">
+
+              <div class="">
+                <h2></h2>
+                <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+                  <div class="mb-3">
+                    <label for="imgUpload" class="form-label text-indigo-800 font-bold">Add Progress Pictures</label>
+                    <input class="ml-24 w-36" type="file" class="form-control rounded-md" id="imageUpload" name="file">
+                  </div>
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="rounded-lg border border-gray-300 form-control" id="title" name="title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="caption" class="form-label">Caption</label>
+                    <textarea class="rounded-lg border border-gray-300 h-8 form-control" id="caption" name="caption"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                </form>
+
+                <!-- <div class="mt-4 recent bg-gray-200 rounded-lg px-5 pb-4 pt-1">
+                  <% for(var i=0; i<posts.length; i++) {%>
+                    <div class="col-6 justify-content-between mt-5">
+                      <div>Most Recent</div>
+                      <a href="/post/<%= posts[i]._id%>">
+                        <img class="img-fluid" src="<%= posts[i].image%>">
+                      </a>
+                    </div>
+                  <% } %> -->
+                  
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>
-    <script src="main.js"></script>
+  </div>
+</main>
 
-</body>
 
-</html>
+
+<%- include('partials/footer') -%>

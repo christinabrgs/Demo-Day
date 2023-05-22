@@ -98,15 +98,55 @@ if (typeof document !== 'undefined') {
     input6.setAttribute("class", "workout rounded-md w-20")
     cell6.appendChild(input6)
 
+    // Radio
     const cell7 = row.insertCell(6)
-    const input7 = document.createElement('input')
-    const label7 = document.createElement('label')
-    input7.type = 'radio'
-    label7.innerText = ' 1'
-    input7.classList.add('newRow')
-    input7.setAttribute("class", "")
-    cell7.appendChild(input7)
-    cell7.appendChild(label7)
+    const inputOne = document.createElement('input')
+    const labelOne = document.createElement('label')
+    inputOne.type = 'radio'
+    labelOne.innerText = '1'
+    inputOne.classList.add('newRow')
+    labelOne.setAttribute("class", "px-1")
+
+    const inputTwo = document.createElement('input')
+    const labelTwo = document.createElement('label')
+    inputTwo.type = 'radio'
+    labelTwo.innerText = '2'
+    inputTwo.classList.add('newRow')
+    labelTwo.setAttribute("class", "px-1")
+
+    const inputThree = document.createElement('input')
+    const labelThree = document.createElement('label')
+    inputThree.type = 'radio'
+    labelThree.innerText = '3'
+    inputThree.classList.add('newRow')
+    labelThree.setAttribute("class", "px-1")
+
+    const inputFour = document.createElement('input')
+    const labelFour = document.createElement('label')
+    inputFour.type = 'radio'
+    labelFour.innerText = '4'
+    inputFour.classList.add('newRow')
+    labelFour.setAttribute("class", "px-1")
+
+    const inputFive = document.createElement('input')
+    const labelFive = document.createElement('label')
+    inputFive.type = 'radio'
+    labelFive.innerText = '5'
+    inputFive.classList.add('newRow')
+    labelFive.setAttribute("class", "px-1")
+
+    cell7.appendChild(inputOne)
+    cell7.appendChild(labelOne)
+    cell7.appendChild(inputTwo)
+    cell7.appendChild(labelTwo)
+    cell7.appendChild(inputThree)
+    cell7.appendChild(labelThree)
+    cell7.appendChild(inputFour)
+    cell7.appendChild(labelFour)
+    cell7.appendChild(inputFive)
+    cell7.appendChild(labelFive)
+
+
 
     const cell8 = row.insertCell(7)
     const input8 = document.createElement('input')

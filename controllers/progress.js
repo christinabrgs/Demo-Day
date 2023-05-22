@@ -6,7 +6,7 @@ const logSelection = require("../models/logSelection");
 
 
 module.exports = {
-  getTracking: async (req, res) => {
+  getTable: async (req, res) => {
     try {
       const logSelect = logSelection.find()
       const logs = await log.find({user: req.user})
@@ -16,10 +16,19 @@ module.exports = {
       console.log(err);
     }
   },
+  getLogs: async (req, res) => {
+    try {
+      const logs = await log.find({user: req.user})
+      const workouts = await workout.find({user: req.user})
+      res.render("logs.ejs", { logs: logs, workouts: workouts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createLog: async (req, res) => {
     try {
 
-      console.log(req.body)
+      // console.log(req.body)
       for (let i = 0; i < req.body.length; i++) {
 
         await log.create({
@@ -37,6 +46,17 @@ module.exports = {
       console.log(err);
     }
   },
+  deleteLog: async (req, res) => {
+    console.log('this is', req.params.id)
+    try {
+      // Delete post from db
+      await logs.remove({ _id: req.params.id })
+      console.log("Deleted Log");
+      res.redirect("/logs");
+    } catch (err) {
+      res.redirect("/logs");
+    }
+  },
   logSelection: async (req, res) => {
       console.log(req.body)
     try {
@@ -48,17 +68,6 @@ module.exports = {
       res.redirect(`/tracking`);
     } catch (err) {
       console.log(err);
-    }
-  },
-  deleteFav: async (req, res) => {
-    console.log('this is', req.params.favID)
-    try {
-      // Delete post from db
-      await favorites.remove({ _id: req.params.favID })
-      console.log("Deleted Favorite");
-      res.redirect("/favorites");
-    } catch (err) {
-      res.redirect("/favorites");
     }
   },
 };

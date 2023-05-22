@@ -29,8 +29,10 @@ router.get("/editWorkout/:workoutId", ensureAuth, workoutController.getEditWorko
 router.post("/editWorkout/:workoutId", ensureAuth, workoutController.saveEditWorkout)
 
 // track workouts
-router.get("/tracking", ensureAuth, progressController.getTracking)
+router.get("/tracking", ensureAuth, progressController.getTable)
 router.post("/createLog", ensureAuth, progressController.createLog)
+router.get("/logs", ensureAuth, progressController.getLogs)
+router.delete("/logs/delete/:id", ensureAuth, progressController.deleteLog)
 router.post("/getExcercises", ensureAuth, progressController.logSelection)
 // router.put("/getExcercises", ensureAuth, progressController.logSelection)
 

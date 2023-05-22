@@ -13,7 +13,7 @@ module.exports = {
   getChartData: async (req, res) => {
     
     const logs = await log.find({user: req.user})
-    console.log(logs)
+    // console.log(logs)
     res.json({logs: logs});
   },
   getWorkoutData: async (req, res) => {

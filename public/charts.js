@@ -35,7 +35,7 @@ if (typeof document !== 'undefined') {
 				document.getElementById('container').style.height = chart.getActualHeight() + 'px';
 			});
 
-			chart.title("Logged Workouts");
+			chart.title("");
 			chart.container('container');
 			chart.draw();
 

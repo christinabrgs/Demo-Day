@@ -37,6 +37,8 @@ module.exports = {
           set: parseInt(req.body[i].sets),
           reps: parseInt(req.body[i].reps),
           weight: parseInt(req.body[i].weight),
+          pr: parseInt(req.body[i].pr),
+          rating: parseInt(req.body[i].rating),
           user: req.user.id,
         })
       };

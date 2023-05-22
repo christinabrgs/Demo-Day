@@ -6,8 +6,7 @@ const ObjectID = require('mongodb').ObjectID
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  // apiKey: process.env.key
-  apiKey: ''
+  apiKey: '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'
 
 });
 const openai = new OpenAIApi(configuration);

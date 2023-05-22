@@ -27,7 +27,7 @@ const logSchema = new mongoose.Schema({
     required: true,
   },
   pr: {
-    type: String,
+    type: Number,
     required: false,
   },
   rating: {

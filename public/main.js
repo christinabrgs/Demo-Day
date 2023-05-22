@@ -103,6 +103,7 @@ if (typeof document !== 'undefined') {
     const inputOne = document.createElement('input')
     const labelOne = document.createElement('label')
     inputOne.type = 'radio'
+    inputOne.value = 1
     labelOne.innerText = '1'
     inputOne.classList.add('newRow')
     labelOne.setAttribute("class", "px-1")
@@ -110,6 +111,7 @@ if (typeof document !== 'undefined') {
     const inputTwo = document.createElement('input')
     const labelTwo = document.createElement('label')
     inputTwo.type = 'radio'
+    inputOne.value = 2
     labelTwo.innerText = '2'
     inputTwo.classList.add('newRow')
     labelTwo.setAttribute("class", "px-1")
@@ -117,6 +119,7 @@ if (typeof document !== 'undefined') {
     const inputThree = document.createElement('input')
     const labelThree = document.createElement('label')
     inputThree.type = 'radio'
+    inputOne.value = 3
     labelThree.innerText = '3'
     inputThree.classList.add('newRow')
     labelThree.setAttribute("class", "px-1")
@@ -124,6 +127,7 @@ if (typeof document !== 'undefined') {
     const inputFour = document.createElement('input')
     const labelFour = document.createElement('label')
     inputFour.type = 'radio'
+    inputOne.value = 4
     labelFour.innerText = '4'
     inputFour.classList.add('newRow')
     labelFour.setAttribute("class", "px-1")
@@ -131,6 +135,7 @@ if (typeof document !== 'undefined') {
     const inputFive = document.createElement('input')
     const labelFive = document.createElement('label')
     inputFive.type = 'radio'
+    inputOne.value = 5
     labelFive.innerText = '5'
     inputFive.classList.add('newRow')
     labelFive.setAttribute("class", "px-1")

@@ -11,7 +11,8 @@ if (typeof document !== 'undefined') {
 		.then(response => response.json())
 		.then(data => {
 			console.log(data)
-
+			const ctx = document.getElementById('myChart');
+			const container = document.getElementById('calendar-container');
 
 			const exercisesByDate = data.logs.reduce((acc, { date }) => {
 				const formattedDate = date.split('T')[0]; // Extract the date part from the string
@@ -28,91 +29,49 @@ if (typeof document !== 'undefined') {
 
 			console.log(exercisesByDate);
 
-			// pass the mapped data to the calendar function
-			var chart = anychart.calendar(exercisesByDate);
 
-			chart.listen('chartDraw', function () {
-				document.getElementById('container').style.height = chart.getActualHeight() + 'px';
+
+			// Process the data to create datasets for the line graph
+			const lineData = {
+				labels: exercisesByDate.map(obj => obj.x),
+				datasets: [{
+					label: 'Exercises',
+					data: exercisesByDate.map(obj => obj.value),
+					fill: false,
+					borderColor: 'blue',
+					tension: 0.1
+				}]
+			};
+
+			new Chart(ctx, {
+				type: 'line',
+				data: lineData,
+				options: {
+					scales: {
+						y: {
+							beginAtZero: true
+						}
+					}
+				}
 			});
 
-			chart.title("");
-			chart.container('container');
-			chart.draw();
 
 
 
 
 
 
+			// // pass the mapped data to the calendar function
+			// var chart = anychart.calendar(exercisesByDate);
 
-
-
-
-
-
-
-
-			// LINE CHART
-			// const sortedData = data.logs.map(entry => ({
-			// 	exercise: entry.exercise,
-			// 	weight: entry.weight,
-			// 	date: new Date(entry.date)
-			// }));
-
-			// const groupedData = {};
-
-			// sortedData.forEach(entry => {
-			// 	const exercise = entry.exercise;
-			// 	if (!groupedData[exercise]) {
-			// 		groupedData[exercise] = [];
-			// 	}
-			// 	groupedData[exercise].push(entry);
+			// chart.listen('chartDraw', function () {
+			// 	document.getElementById('container').style.height = chart.getActualHeight() + 'px';
 			// });
 
-			// // Chart.register(ChartTime);
+			// chart.title("");
+			// chart.container('container');
+			// chart.draw();
 
-			// const datasets = Object.entries(groupedData).map(([exercise, entries]) => ({
-			// 	label: exercise,
-			// 	data: entries.map(entry => ({
-			// 		x: moment(entry.date).format("dddd, MMMM Do"),
-			// 		y: entry.weight
-			// 	}))
-			// }));
-
-			// datasets.sort((a, b) => a.data[0].x - b.data[0].x)
-
-			// console.log(datasets)
-
-			// const ctx = document.getElementById("myChart").getContext("2d");
-
-			// new Chart(ctx, {
-			// 	type: "line",
-			// 	data: {
-			// 		datasets: datasets
-			// 	},
-			// 	options: {
-			// 		scales: {
-			// 			x: {
-			// 				type: "time",
-			// 				time: {
-			// 					unit: "day"
-			// 				},
-			// 				display: true,
-			// 				scaleLabel: {
-			// 					display: true,
-			// 					labelString: "Date"
-			// 				}
-			// 			},
-			// 			y: {
-			// 				display: true,
-			// 				scaleLabel: {
-			// 					display: true,
-			// 					labelString: "Weight"
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// })
 
 			//   window.location.reload()
 		})

@@ -3,29 +3,39 @@
 <head>
   <title>Chart.js example</title>
 
-   <!-- any charts -->
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-calendar.min.js"></script>
+  <!-- any charts -->
+  <!-- <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-calendar.min.js"></script> -->
 
 
-  <!-- js heatmap -->
+
+  
 
   <!-- chart js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+
+    <!-- js heatmap -->
+  
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- v6 is also supported -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
+    </script>
 </head>
 
 <body>
 
+  <div id="calendar-container"></div>
 
-  <div>
-    <canvas id="myChart"></canvas>
+
+  <div style="width: 40%;" id="container">
   </div>
 
-  <div style="width: 80%;" id="container">
-  </div>
+
 
   <div style="width: 30%;">
     <canvas id="circleChart"></canvas>

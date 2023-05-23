@@ -26,7 +26,9 @@
 
                     <div class="col-sm-6 mx-auto px-3 py-8">
                         <h1 class="text-left pl-5 text-black py-10 font-bold">LOG EXERCISE</h1>
-                        <!-- <form action="/getExcercises" method="post">
+                       
+                        <!-- select  -->
+                        <form action="/getExcercises" method="post">
                             <label for="cars">Choose a Plan:</label>
                             <select name="savedWorkouts" id="savedWorkouts">
                                 <% workouts.forEach(workout => { %>
@@ -36,8 +38,9 @@
                                 <%} %>
                                 <%}) %>
                             </select>
-                            <button type="submit" value="submit"> submit </button>
-                        </form> -->
+                            <button type="button" id="populate">populate</button>
+                        </form>
+
                         <table class="workoutTable py-10 rounded-lg bg-white shadow">
                             <tr class="headOfTable">
                                 <th>
@@ -67,10 +70,10 @@
                             </tr>
                             <tr class="newRow">
                                 <td>
-                                    <input class="workout  ml-1 mr-0.5 rounded-md" type="date">
+                                    <input id="dateValue" class="workout  ml-1 mr-0.5 rounded-md" type="date">
                                 </td>
                                 <td>
-                                    <input class="workout w-32 mx-0.5 my-1 rounded-md" type="text">
+                                    <input id="exercise" class="workout w-32 mx-0.5 my-1 rounded-md" type="text">
                                 </td>
                                 <td>
                                     <input class="workout mx-0.5 my-1 text-black w-20 px-2 rounded-md" type="number">

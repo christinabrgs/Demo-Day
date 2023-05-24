@@ -1,9 +1,8 @@
 <%- include('partials/header') -%>
 
-<header class="py-10">
-
-    <div class="mx-auto max-w-5xl px-8 sm:px-6 lg:px-12">
-        <h1 class="text-3xl font-bold tracking-tight text-white">Log Your Workouts</h1>
+<header class="pt-10 pb-6">
+    <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-16">
+      <h1 class="text-3xl font-bold tracking-tight text-[#eda161]">Log Your Workouts</h1>
     </div>
 
 </header>
@@ -25,12 +24,12 @@
 
 
                     <div class="col-sm-6 mx-auto px-3 py-8">
-                        <h1 class="text-left pl-5 text-black py-10 font-bold">LOG EXERCISE</h1>
+                        <h1 class="text-left pl-5 text-black py-10 font-bold"></h1>
                        
                         <!-- select  -->
-                        <form action="/getExcercises" method="post">
-                            <label for="cars">Choose a Plan:</label>
-                            <select name="savedWorkouts" id="savedWorkouts">
+                        <form class="pb-16 px-4" action="/getExcercises" method="post">
+                            <label for="cars">choose a plan:</label>
+                            <select class="bg-transparent" name="savedWorkouts" id="savedWorkouts">
                                 <% workouts.forEach(workout => { %>
                                 <% if (workout.saved == true) { %>
                                 <option name="savedWorkout" value="<%= workout.workoutJSON.workoutName%>">
@@ -38,7 +37,7 @@
                                 <%} %>
                                 <%}) %>
                             </select>
-                            <button type="button" id="populate">populate</button>
+                            <button class="ml-4 addSet text-black px-2 bg-indigo-400 rounded-md rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500" type="button" id="populate">populate exercises</button>
                         </form>
 
                         <table class="workoutTable py-10 rounded-lg bg-white shadow">
@@ -82,10 +81,10 @@
                                     <input class="workout mx-0.5 my-1 text-black w-20 px-2 rounded-md" type="number">
                                 </td>
                                 <td>
-                                    <input class="workout mx-0.5 my-1 w-32 rounded-md" type="number">
+                                    <input class="workout mx-0.5 my-1 w-32 pl-6 rounded-md" value="0" type="number">
                                 </td>
                                 <td>
-                                    <input class="workout rounded-md w-20" type="checkbox" value="true">
+                                    <input class="workout rounded-md w-20" type="checkbox">
                                 </td>
                                 <td>
                                     <form class="w-36">
@@ -109,12 +108,12 @@
 
                         <div class="buttons mx-auto px-10 py-10">
                             <div class="buttons mx-auto w-80">
-                                <button class="logWorkout text-black px-2 bg-slate-400 rounded-md">Log
+                                <button class="logWorkout text-black px-2 bg-amber-600 rounded-md rounded-md bg-amber-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Log
                                     Workout</button>
                                 <button value="add_set" onclick="addSet('workoutTable')"
-                                    class="addSet text-black px-2 bg-slate-400 rounded-md">Add Set</button>
+                                    class="addSet text-black px-2 bg-indigo-600 rounded-md rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Add Row</button>
                                 <button value="remove_set" onclick="removeSet('workoutTable')"
-                                    class="removeSet text-black px-2 bg-slate-400 rounded-md">Remove Set</button>
+                                    class="removeSet text-black px-2 bg-indigo-600 rounded-md rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Remove Row</button>
 
                             </div>
                         </div>
@@ -127,6 +126,6 @@
 
     </div>
 </main>
-<script src="main.js"></script>
 
-<%- include('partials/footer') -%>
+
+<%- include('partials/createlogfooter') -%>

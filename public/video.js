@@ -1,3 +1,6 @@
+if (typeof document !== 'undefined') {
+document.addEventListener('DOMContentLoaded', function() {
+
 function videoResults() {
 
     let suggestion = document.querySelector('.search').value
@@ -18,8 +21,13 @@ function videoResults() {
         .then(data2 => {
             console.log(data2)
             console.log(data2.items[0].id.videoId)
-            document.querySelector('.video-one').src = `https://www.youtube.com/embed/${data2.items[0].id.videoId}`
-            document.querySelector('.video-two').src = `https://www.youtube.com/embed/${data2.items[1].id.videoId}`
+
+
+            const video = document.querySelector('#video')
+            if(video) {
+            video.src = `//www.youtube.com/embed/${data2.items[0].id.videoId}`
+            }
+            // document.querySelector('.video-two').src = `https://www.youtube.com/embed/${data2.items[1].id.videoId}`
             
         })
         
@@ -32,3 +40,6 @@ function videoResults() {
 
 
 document.querySelector('.searchVideo').addEventListener('click', videoResults)
+
+})
+}

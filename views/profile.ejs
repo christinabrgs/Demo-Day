@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
-<header class="py-10">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-12">
-    <h1 class="text-3xl font-bold tracking-tight text-white">Your Profile</h1>
+<header class="pt-10 pb-6">
+  <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-16">
+    <h1 class="text-3xl font-bold tracking-tight text-[#eda161]">Your Profile</h1>
   </div>
 </header>
 
@@ -17,10 +17,11 @@
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
 
-          <div class="overflow-hidden h-58 rounded-lg bg-white shadow">
+          <div class="overflow-hidden h-fit rounded-lg bg-white shadow">
             <div class="p-10 grid">
               <div class="flex items-center">
-                <div class="font-medium flex-1 text-indigo-800 pl-32 text-center"> Logged Workouts</div>
+                <div class="text-2xl font-medium flex-1 text-amber-600 pl-32 text-center"> Logged Workouts</div>
+                
                 <a href='/tracking'
                   class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                   <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -31,30 +32,28 @@
                   Log Workout
                 </a>
               </div>
-
-
-                <!-- <ul class="w-80">
-                  <% for (let i = 0; i < 4; i++) {%>
-
-                  <% let month = logs[i].date.getUTCMonth() + 1; //months from 1-12 %>
-                  <% let day = logs[i].date.getUTCDate(); %>
-                  <% let year = logs[i].date.getUTCFullYear(); %>
-
-                  <% let newdate = year + "/" + month + "/" + day; %>
-
-                  <li class="py-1"> <%= newdate %> <%= logs[i].exercise %> (<%= logs[i].set %> x <%= logs[i].reps %>
-                    reps) with <%= logs[i].weight %> lbs </li>
-                  <% } %>
-                </ul> -->
-
-                
-                <div style="width: 100%;">
-                  <canvas id="myChart"></canvas>
-                </div>
-
+              <div class="text-sm flex-1 text-black text-center"> Exercises per Day Over Time</div>
+              <div class="py-10" style="width: 100%;">
+                <canvas id="myChart"></canvas>
               </div>
+              <div class=" font-medium text-lg text-yellow-500 flex-1 pb-3">Personal Records</div>
+              <ul class="pl-6">
+                <% for (let i = 0; i < logs.length; i++) {%>
+                <%  if (logs[i].pr == 'on') { %>
+                <% let month = logs[i].date.getUTCMonth() + 1; //months from 1-12 %>
+                <% let day = logs[i].date.getUTCDate(); %>
+                <% let year = logs[i].date.getUTCFullYear(); %>
 
+                <% let newdate = year + " / " + month + " / " + day; %>
+
+                <li class="py-1"> <%= newdate %> • <%= logs[i].exercise %> (<%= logs[i].set %> x <%= logs[i].reps %> reps)
+                  with <%= logs[i].weight %> lbs </li>
+                <% } %>
+                <% } %>
+              </ul>
             </div>
+
+          </div>
         </section>
       </div>
 
@@ -65,7 +64,7 @@
           <div class="overflow-hidden rounded-lg bg-white shadow">
             <div class="p-6">
               <div class="flex items-center pb-4">
-                <div class=" font-medium text-indigo-800 flex-1">Your Workout Plans</div>
+                <div class=" font-medium text-lg text-indigo-700 flex-1">Your Workout Plans</div>
                 <a href='/form'
                   class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                   <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -107,9 +106,9 @@
             <div class="overflow-hidden rounded-lg bg-white shadow">
               <div class="p-6">
                 <div class="flex items-center pb-4">
-                  <div class=" font-medium text-indigo-800 flex-1">Resources</div>
+                  <div class=" font-medium text-lg text-amber-600 flex-1">Resources</div>
 
-                  <!-- <form> -->
+
                   <div
                     class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                     <input type="text" class="search text-black">
@@ -121,24 +120,25 @@
                     </svg>
                     <button type="submit" class="searchVideo"> Search </button>
                   </div>
-                  <!-- </form> -->
+
                 </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
 
-                  <% (workouts || []).forEach(function(workout) { %>
+
                   <div
                     class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
                     <div class="min-w-0 flex-1">
 
-                      <iframe class="video-one rounded-md" width="100%" height="315"
-                        src="https://www.youtube.com/embed/Y8HIFRPU6pM" title="YouTube video player" frameborder="0"
+                      <iframe id="video" class="video-one rounded-md" width="100%" height="315"
+                        src="https://www.youtube.com/embed/Y8HIFRPU6pM" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
-                      <!-- <iframe class="video-two" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
 
                     </div>
                   </div>
-                  <%})%>
+
+
 
                 </div>
               </div>
@@ -147,25 +147,6 @@
         </div>
 
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,12 +162,15 @@
                 <h2></h2>
                 <form action="/post/createPost" enctype="multipart/form-data" method="POST">
                   <div class="mb-3">
-                    <label for="imgUpload" class="form-label text-indigo-800 font-bold">Add Progress Pictures</label>
-                    <input class="ml-24 w-36" type="file" class="form-control rounded-md" id="imageUpload" name="file">
+                    <label for="imgUpload" class="form-label text-amber-600 font-bold">Add Progress Pictures
+                      <input class="ml-24 w-36 form-control" type="file" style="background-color: none;"
+                        id="imageUpload" name="file">
+                    </label>
                   </div>
                   <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="rounded-lg border border-gray-300 form-control" id="title" name="title">
+                    <label for="title" class="form-label">Title
+
+                      <input type="text" class="rounded-lg border border-gray-300 form-control" id="title" name="title">
                   </div>
                   <div class="mb-3">
                     <label for="caption" class="form-label">Caption</label>
@@ -194,58 +178,44 @@
                       name="caption"></textarea>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                  <button type="submit"
+                    class="btn btn-primary bg-indigo-500 text-white px-2 py-1 rounded-md shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    value="Upload">Submit</button>
                 </form>
 
-                <!-- <div class="mt-4 recent bg-gray-200 rounded-lg px-5 pb-4 pt-1">
+                <div class="mt-4 recent bg-gray-200 rounded-lg px-5 pb-4 pt-1">
                   <% for(var i=0; i<posts.length; i++) {%>
-                    <div class="col-6 justify-content-between mt-5">
-                      <div>Most Recent</div>
-                      <a href="/post/<%= posts[i]._id%>">
-                        <img class="img-fluid" src="<%= posts[i].image%>">
-                      </a>
-                    </div>
-                  <% } %> -->
+                  <div class="col-6 justify-content-between mt-5">
+                    <div class="text-amber-600 p-2">Most Recent</div>
+                    <a href="/post/<%= posts[i]._id%>">
+                      <img class="img-fluid mb-2 rounded-md" src="<%= posts[i].image%>">
+                    </a>
+                  </div>
+                  <% } %>
 
 
+                </div>
               </div>
+
             </div>
-
           </div>
+        </section>
       </div>
-      </section>
+
+
+
+
+
+
+
+
+
+
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
   </div>
 </main>
 
 
 
-<%- include('partials/footer') -%>
+<%- include('partials/profilefooter') -%>

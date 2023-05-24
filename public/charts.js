@@ -47,6 +47,9 @@ if (typeof document !== 'undefined') {
 				type: 'line',
 				data: lineData,
 				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					height: 500,
 					scales: {
 						y: {
 							beginAtZero: true

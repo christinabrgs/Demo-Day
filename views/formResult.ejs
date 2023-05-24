@@ -49,7 +49,7 @@
                 </ul>
 
                 <form class="text-right" action="/editWorkout/<%= workout._id %>" method="get">
-                  <button class="text-white py-1 px-2 bg-gray-800 rounded-md" type="submit">
+                  <button class="text-white py-1 mr-5 px-2 bg-gray-800 rounded-md hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500" type="submit">
                     edit
                   </button>
                 </form> 
@@ -81,68 +81,7 @@
       </div>
   </main>
 </div>
-<!-- <div class="container text-white mx-auto px-40">
-  <div class="row mt-5">
-    <div class="col-6">
-      <div>
-        <p><strong>User Name</strong>: <%= user.userName %></p>
-        <p><strong>Email</strong>: <%= user.email %></p>
-        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="page-header text-center">
-
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    <a href="/favorites" class="btn btn-default btn-sm">Favorites</a>
-  </div>
-
-  <div class="row">
-
-    
-    <div class="col-sm-6 mx-auto px-28 py-8">
-
-      
-
-      
-        <h1 class="text-center">GENERATED RESULTS</h1>
-        <p class="py-4">
-          <div id="results" class=" text-center col col-sm-5">
-            
-                <% if (typeof workout !== 'undefined') { %>
-                  <pre>
-                      <%= JSON.stringify(workout.workoutJSON, null,3) %>
-                  </pre>
-                <% } %>  
-                
-
-
-
-                <button class="text-black px-2 bg-slate-400 rounded-md" type="submit">Save Plan</button>
-
-                
-              </ul>
-            </p>
-          </div>
-      </form>
-
-
-
-
-      </form>
-    </div>
-
-
-
-
-
-
-  </div>
-
-</div>
- -->
 
 
 

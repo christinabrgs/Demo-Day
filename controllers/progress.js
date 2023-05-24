@@ -2,16 +2,16 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const workout = require("../models/workout");
 const log = require("../models/log");
-const logSelection = require("../models/logSelection");
+
 
 
 module.exports = {
   getTable: async (req, res) => {
     try {
-      const logSelect = logSelection.find()
+
       const logs = await log.find({user: req.user})
       const workouts = await workout.find({user: req.user})
-      res.render("logworkout.ejs", { logs: logs, logSelect: logSelect, workouts: workouts, user: req.user });
+      res.render("logworkout.ejs", { logs: logs, workouts: workouts, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -28,7 +28,7 @@ module.exports = {
   createLog: async (req, res) => {
     try {
 
-      // console.log(req.body)
+      console.log(req.body)
       for (let i = 0; i < req.body.length; i++) {
 
         await log.create({
@@ -37,13 +37,13 @@ module.exports = {
           set: parseInt(req.body[i].sets),
           reps: parseInt(req.body[i].reps),
           weight: parseInt(req.body[i].weight),
-          pr: parseInt(req.body[i].pr),
+          pr: req.body[i].pr,
           rating: parseInt(req.body[i].rating),
           user: req.user.id,
         })
       };
       console.log("Post has been added!");
-      res.redirect("/log");
+      res.redirect("/logs");
     } catch (err) {
       console.log(err);
     }

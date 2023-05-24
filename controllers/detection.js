@@ -32,7 +32,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/log");
+      res.redirect("/logs");
     } catch (err) {
       console.log(err);
     }

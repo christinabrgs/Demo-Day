@@ -1,15 +1,19 @@
 const cloudinary = require("../middleware/cloudinary");
+// const openai = require("../middleware/openai");
 const Post = require("../models/Post");
 const workout = require("../models/workout");
-const key = 'key'
 const ObjectID = require('mongodb').ObjectID
+
+// open ai config
 const { Configuration, OpenAIApi } = require("openai");
+ 
 
 const configuration = new Configuration({
-  apiKey: process.env.apiKey
-
+  apiKey: process.env.OPENAI_KEY
 });
 const openai = new OpenAIApi(configuration);
+
+
 
 module.exports = {
   getForm: async (req, res) => {
@@ -114,7 +118,7 @@ module.exports = {
       console.time('get ai data')
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Create an exercise plan for a person who weighs ${weight} lbs, \nis ${feet} feet ${inches} inches tall,\nwants to focus on ${focus},\nworkout ${days} days a week, is a ${level}, and wants to ${goal}. Take into consideration these special circunstances ${notes} Make the workout a json object with a list a of excercises, how many reps and sets, a name and the instructions. Include in the json object a name for the overall workout  as well as the workout instructions. Json should have no line breaks and be formatted like this { "workoutName": "", "instructions": "", "exercises": [{"name":"", "reps":"", "instructions":""},...]}`,
+        prompt: `Create an exercise plan for a person who weighs ${weight} lbs, \nis ${feet} feet ${inches} inches tall,\nwants to focus on ${focus},\nworkout ${days} days a week, is at a ${level} level, and wants to ${goal}. Take into consideration these special circunstances ${notes} when picking the exercises for the workout. Make the workout a json object with a list a of excercises, how many reps and sets, a name and the instructions. Include in the json object a name for the overall workout  as well as the workout instructions. Json should have no line breaks and be formatted like this { "workoutName": "", "instructions": "", "exercises": [{"name":"", "reps":"", "instructions":""},...]}`,
         temperature: 0.7,
         max_tokens: 900,
         top_p: 1,

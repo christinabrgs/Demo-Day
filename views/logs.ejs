@@ -1,9 +1,8 @@
 <%- include('partials/header') -%>
 
-<header class="py-10">
-
-    <div class="mx-auto max-w-5xl px-8 sm:px-6 lg:px-12">
-        <h1 class="text-3xl font-bold tracking-tight text-white">Your Exercise Logs</h1>
+<header class="pt-10 pb-6">
+    <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-16">
+      <h1 class="text-3xl font-bold tracking-tight text-[#eda161]">Your Exercise Logs</h1>
     </div>
 
 </header>
@@ -19,7 +18,20 @@
         <!-- Your content -->
         <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
             <div class="relative rounded border border-dashed border-gray-400 opacity-75">
-              
+            
+                <div class="flex items-center pt-10 pr-14">
+                    <div class="text-2xl font-medium flex-1 text-amber-600 pl-32 text-center"> </div>
+                    <a href='/tracking'
+                      class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                      <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path
+                          d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z">
+                        </path>
+                      </svg>
+                      Log Workout
+                    </a>
+                  </div>
+
               <div style="margin: auto; padding-top: 60px; width: 25%;">
                 <canvas id="circleChart"></canvas>
               </div>
@@ -91,22 +103,13 @@
                                 <td>
                                   <%= log.weight %>
                                 </td>
-                                <td>
-                                    <input class="workout rounded-md w-20" type="checkbox" value="true">
+                                <td class="p-6"> 
+                                    <% if (log.pr == 'on') { %>
+                                      <%= 'Yes' %>
+                                      <% } %> 
                                 </td>
                                 <td>
-                                    <form class="w-36">
-                                        <input type="radio" id="1" name="rate" value="1">
-                                        <label for="1">1</label>
-                                        <input type="radio" id="2" name="rate" value="2">
-                                        <label for="2">2</label>
-                                        <input type="radio" id="3" name="rate" value="3">
-                                        <label for="3">3</label>
-                                        <input type="radio" id="4" name="rate" value="4">
-                                        <label for="4">4</label>
-                                        <input type="radio" id="5" name="rate" value="5">
-                                        <label for="5">5</label>
-                                      </form>
+                                   <%= log.rating %>
                                 </td>
                                 <td class="text-red-700">
                                   <form
@@ -131,6 +134,5 @@
 
     </div>
 </main>
-<script src="main.js"></script>
 
-<%- include('partials/footer') -%>
+<%- include('partials/logfooter') -%>

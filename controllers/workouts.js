@@ -148,25 +148,6 @@ module.exports = {
       formattedResponse = formattedResponse.replace(regex3, "")
       console.log(formattedResponse)
 
-      // const timeFrame = await openai.createCompletion({
-      //   model: "gpt-3.5-turbo",
-      //   prompt: `can you give advice on raching this ${goal}. Keep the answer short and concise.`,
-      //   temperature: 0.7,
-      //   max_tokens: 256,
-      //   top_p: 1,
-      //   frequency_penalty: 0,
-      //   presence_penalty: 0,
-      // });
-
-      // const JSONresponse = timeFrame.data.choices[0].text.replace();
-      // const parsed = JSON.stringify(JSONresponse);
-
-      // // Replace all matches with an empty string
-      // let timeResponse = parsed.replace(regex, "")
-      // timeResponse = timeResponse.replace(regex2, "")
-
-      // console.log(timeResponse)
-
       let thisWorkout = await workout.create({
         workout: formattedResponse,
         user: req.user.id,

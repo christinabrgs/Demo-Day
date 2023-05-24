@@ -1,6 +1,6 @@
-<%- include('partials/header') -%>
-    <main class="container text-white">
-        <div class="row justify-content-center">
+<%- include('partials/indexheader') -%>
+    <main class="container mx-auto text-left text-white">
+        <div class="row w-96 mx-auto">
             <section class="col-6 mt-5">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
@@ -15,22 +15,22 @@
                 <form action="/signup" method="POST">
                     <div class="mb-3">
                         <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
+                        <input type="text" class="my-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" id="userName" name="userName">
                       </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      <input type="email" class="my-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                      <div id="emailHelp" class="font-semibold text-indigo-400 hover:text-indigo-300">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
+                      <input type="password" class="my-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" id="password" name="password">
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                        <input type="password" class="my-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" id="confirmPassword" name="confirmPassword">
                       </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Submit</button>
                   </form>
             </section>
         </div>

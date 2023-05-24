@@ -10,7 +10,11 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Main Routes - simplified for now
 router.get("/", homeController.getIndex);
+
+
+// chart / log data 
 router.get("/charts", homeController.getCharts);
+// router.post("/charts", homeController.readData);
 router.get("/chartData", homeController.getChartData);
 router.get("/workoutData", homeController.getWorkoutData);
 
@@ -36,8 +40,6 @@ router.delete("/logs/delete/:id", ensureAuth, progressController.deleteLog)
 router.post("/getExcercises", ensureAuth, progressController.logSelection)
 // router.put("/getExcercises", ensureAuth, progressController.logSelection)
 
-// pose detection
-router.get("/detection", ensureAuth, detectionController.getPose)
 
 router.get("/profile", ensureAuth, postsController.getProfile);
 router.get("/profile", ensureAuth, postsController.getProfile);

@@ -1,4 +1,4 @@
-# Workout Generator
+# Workout AI Generator
 
 This is a full-stack application built using Node.js and MongoDB on the backend, and HTML/EJS/CSS on the frontend. The website generates a curated workout for the user based on their form inputs (i.e weight, height, goal, focus, etc.) and also allows the user to save workouts to their profile. Users can log exercises to track their progress.
 

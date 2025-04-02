@@ -2,18 +2,52 @@
 
 This is a full-stack application built using Node.js and MongoDB on the backend, and HTML/EJS/CSS on the frontend. The website generates a curated workout for the user based on their form inputs (i.e weight, height, goal, focus, etc.) and also allows the user to save workouts to their profile. Users can log exercises to track their progress.
 
-## Installation
+Installation
+Follow these steps to set up the project on your local machine:
 
-1. Clone the repository to your local machine
+Clone the Repository
 
-2. Navigate to the project directory and install the necessary dependencies: npm install
+sh
+Copy
+Edit
+git clone git@github.com:christinabrgs/Demo-Day.git
+Navigate to the Project Directory
 
-3. Access the application by running 'node server.js' opening your web browser and navigating to `http://localhost:2121`.
+sh
+Copy
+Edit
+cd Demo-Day
+Install Dependencies
 
-4. Make sure you navigate to controllers > workouts.js and on line 9 replace the 'placeholder' at 'apiKey' with chatGPT's OpenAI API Key. 
+sh
+Copy
+Edit
+npm install
+Configure API Key
 
-5. Start by navigating to the "Generate Workouts" page via the nav button in the header to generate a customized workout. Save it to your profile by clicking the "Save" button, then get tracking.
+Open controllers/workouts.js.
 
-features that will be added on: to be updated.
+Locate line 9 and replace 'placeholder' in the apiKey variable with your OpenAI API key.
+
+Start the Application
+
+sh
+Copy
+Edit
+node server.js
+Open your web browser and go to http://localhost:2121.
+
+Generate and Track Workouts
+
+Navigate to the "Generate Workouts" page via the navigation button in the header.
+
+Customize and generate your workout.
+
+Click the "Save" button to store it in your profile.
+
+Start tracking your progress!
+
+
+
 
 

@@ -10,12 +10,12 @@ Follow these steps to set up the project on your local machine:
    git clone git@github.com:christinabrgs/Demo-Day.git
 Navigate to the Project Directory
 
-   ``sh
+   ```sh
    cd Demo-Day
 Install Dependencies
 
 2. **Navigate to the Project Directory**
-   ``sh
+   ```sh
    npm install
    
 3. **Configure API Key**
@@ -25,7 +25,7 @@ Locate line 9 and replace 'placeholder' in the apiKey variable with your OpenAI 
 
 4. **Start the Application**
 
-   ``sh
+   ```sh
    node server.js
 Open your web browser and go to http://localhost:2121.
 

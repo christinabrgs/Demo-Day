@@ -3,14 +3,11 @@
 This is a full-stack application built using Node.js and MongoDB on the backend, and HTML/EJS/CSS on the frontend. The website generates a curated workout for the user based on their form inputs (i.e weight, height, goal, focus, etc.) and also allows the user to save workouts to their profile. Users can log exercises to track their progress.
 
 Installation
-Follow these steps to set up the project on your local machine:
+Follow these steps to set up the project on your local machine:  
 
-Clone the Repository
-
-sh
-Copy
-Edit
-git clone git@github.com:christinabrgs/Demo-Day.git
+1. **Clone the Repository**  
+   ```sh
+   git clone <repository-url>
 Navigate to the Project Directory
 
 sh
@@ -46,6 +43,11 @@ Customize and generate your workout.
 Click the "Save" button to store it in your profile.
 
 Start tracking your progress!
+
+python
+Copy
+Edit
+
 
 
 
